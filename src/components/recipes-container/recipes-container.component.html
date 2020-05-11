@@ -1,0 +1,25 @@
+<div class="container bg-light p-4 mt-4 mb-4">
+    <div *ngIf="recipes">
+        <div class="row ">
+            <div class="col-md-6 col-lg-4 col-xs-12 mb-3 recipe" 
+            *ngFor="let recipe of recipes"
+                (click)="recipeOnClick(recipe)">
+                <img src="{{recipe.image}}" class="img-responsive"/>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!recipes" class="justify-content-centar d-flex align-items-center">
+        <h1>Loading...</h1>
+    </div>
+    
+    <div class="justify-content-center align-items-center d-flex">
+        <ul class="nav">
+            <li>
+                <button (click)="previousPage()" class="btn btn-light">Previous</button>
+            </li>
+            <li>
+                <button (click)="nextPage()" class="btn btn-light">Next</button>
+            </li>
+        </ul>
+    </div>
+</div>

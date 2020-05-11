@@ -1,0 +1,61 @@
+<div class="container bg-light pt-3">
+  <form name='registerForm' [formGroup]='registerForm'>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label>
+            Username:
+            <input type="text" formControlName="username" class="form-control" 
+                      [ngClass]="{'is-invalid':registerForm.get('username').touched && registerForm.get('username').invalid}" />
+            <div class="error-feedback" 
+                    *ngIf="registerForm.get('username').touched && registerForm.get('username').invalid"  >
+                <p class="error" *ngIf="registerForm.get('username').errors.required">This field is required!</p>
+                <p class="error" *ngIf="registerForm.get('username').errors.pattern">The username should be between 8 and 24 characters!</p>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label>
+            E-mail:
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{'is-invalid':registerForm.get('email').touched && registerForm.get('email').invalid}" />
+            <div class="error-feedback" *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid" >
+              <p *ngIf="registerForm.get('email').errors.required" class="error">This field is required!</p>
+              <p *ngIf="registerForm.get('email').errors.email" class="error">E-mail invalid format <strong>Example:</strong><em>example@example.com</em>!</p>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label>
+            Password:
+            <input type="password" (keyup)='passwordKeyUp()' formControlName="password" class="form-control" [ngClass]="{'is-invalid':registerForm.get('password').touched && registerForm.get('password').invalid}" />
+            <div class="error-feedback" *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid" >
+              <p *ngIf="registerForm.get('password').errors.required"  class="error">This field is required!</p>
+              <p *ngIf="registerForm.get('password').errors.pattern" class="error">The password should be between 4 and 16 characters!</p>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label>
+            Confirm password:
+            <input type="password" (keyup)='passwordKeyUp()' formControlName="confirm" class="form-control" [ngClass]="{'is-invalid':registerForm.get('confirm').touched && registerForm.get('confirm').invalid}" />
+            <div class="error-feedback" *ngIf="registerForm.get('confirm').touched && registerForm.get('confirm').invalid" >
+              <p *ngIf="registerForm.get('confirm').errors.required" class="error">This field is required!</p>
+              <p *ngIf="registerForm.get('confirm').errors.pattern" class="error">The password should be between 4 and 16 characters!</p>
+              <p *ngIf="!doPasswordsMatch" class="error">The passwords don't match!</p>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="mt-1 justify-content-center align-items-center d-flex">
+        <button class="btn btn-light" (click)="submit()">Submit</button>
+    </div>
+  </form>
+</div>
+
