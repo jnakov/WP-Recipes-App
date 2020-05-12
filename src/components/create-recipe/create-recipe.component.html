@@ -1,3 +1,58 @@
 <form action="" [formGroup]='formRecipe' class="form">
-    
+    <div class="form-group">
+        <label for="name">
+            Name:
+            <input type="text"
+             name="name"
+              formControlName='name'
+              class="form-control"
+              >
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="description">
+            Description:
+            <input type="text"
+             name="description" 
+             formControlName='description' 
+             class="form-control"
+             >
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="veggie">
+            Veggie:
+            <input type="text" 
+            name="veggie"
+             formControlName='veggie'
+              class="form-control"
+              >
+        </label>
+    </div>
+    <div class="form-group">
+    <label for="image">
+        Image:
+        <input type="text" name="image" formControlName='image' class="form-control">
+    </label>
+    </div>
+    <div class="form-group">
+        <label for="numberIngredients">
+            Number of Ingredients:
+            <select name="numberIngredients" 
+                (change)='onNumberChange($event)'
+                >
+                <option value=""></option>
+                <option *ngFor='let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]'>{{i}}</option>
+            </select>
+        </label>
+    </div>
+    <div class="form-group" *ngFor="let ingredient of ingredients.controls; let i = index">
+        <label for="ingredients" >
+            Ingredients:
+            <input type="text" name="ingredients" 
+            formControlName='ingredients'
+            [ngClass]="{is-invalid:formRecipe.get('ingredients').touched&&formRecipe.get('ingredients').invalid}"
+             class="form-control">
+        </label>
+    </div>
 </form>
