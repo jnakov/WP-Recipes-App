@@ -15,6 +15,7 @@ import {NgRedux, NgReduxModule} from 'ng2-redux'
 import { RecipeDetailsModule } from 'src/components/recipe-details/recipe-details.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminPageModule } from 'src/components/admin-page/admin-page.module';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AdminPageModule } from 'src/components/admin-page/admin-page.module';
     RecipeDetailsModule,
     FormsModule,
     ReactiveFormsModule,
-    AdminPageModule
+    AdminPageModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

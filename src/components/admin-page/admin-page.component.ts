@@ -17,7 +17,6 @@ export class AdminPageComponent implements OnInit {
 
   createRecipe(){
     this.show = !this.show;
-    debugger;
   }
 
 }
